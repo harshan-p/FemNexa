@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 340 30% 98%;
+    --foreground: 280 20% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 280 20% 15%;
+    --primary: 350 55% 72%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 260 30% 75%;
+    --secondary-foreground: 260 40% 20%;
+    --muted: 330 20% 95%;
+    --muted-foreground: 280 10% 45%;
+    --accent: 150 30% 68%;
+    --accent-foreground: 150 40% 15%;
+    --border: 330 15% 90%;
+    --input: 330 15% 90%;
+    --ring: 350 55% 72%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --radius: 1rem;
+    --popover: 0 0% 100%;
+    --popover-foreground: 280 20% 15%;
+
+    --menstrual: 350 55% 72%;
+    --follicular: 150 30% 68%;
+    --ovulation: 28 80% 78%;
+    --luteal: 260 30% 75%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 270 15% 8%;
+    --foreground: 300 10% 92%;
+    --card: 270 12% 12%;
+    --card-foreground: 300 10% 92%;
+    --primary: 350 50% 68%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 260 30% 60%;
+    --secondary-foreground: 260 20% 92%;
+    --muted: 270 10% 16%;
+    --muted-foreground: 280 8% 60%;
+    --accent: 150 25% 50%;
+    --accent-foreground: 150 20% 92%;
+    --border: 270 10% 20%;
+    --input: 270 10% 20%;
+    --ring: 350 50% 68%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --popover: 270 12% 12%;
+    --popover-foreground: 300 10% 92%;
+
+    --menstrual: 350 50% 68%;
+    --follicular: 150 25% 55%;
+    --ovulation: 28 70% 65%;
+    --luteal: 260 30% 65%;
+
+    --sidebar-background: 270 15% 8%;
+    --sidebar-foreground: 300 10% 92%;
+    --sidebar-primary: 300 10% 92%;
+    --sidebar-primary-foreground: 270 15% 8%;
+    --sidebar-accent: 270 10% 16%;
+    --sidebar-accent-foreground: 300 10% 92%;
+    --sidebar-border: 270 10% 20%;
+    --sidebar-ring: 350 50% 68%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 999px; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+.glass {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: hsl(var(--card) / 0.65);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.glass-strong {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: hsl(var(--card) / 0.8);
+  border: 1px solid hsl(var(--border) / 0.6);
+  box-shadow: 0 8px 32px hsl(var(--foreground) / 0.04);
+}
+
+.skeleton {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted) / 0.5) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes float-gradient {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(10px, -15px) scale(1.05); }
+  50% { transform: translate(-5px, -25px) scale(1.1); }
+  75% { transform: translate(-15px, -10px) scale(1.03); }
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+.animate-float-gradient {
+  animation: float-gradient 8s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.phase-bg-menstrual {
+  background: linear-gradient(135deg, hsl(350 55% 72% / 0.15), hsl(350 55% 72% / 0.05), hsl(var(--background)));
+}
+.phase-bg-follicular {
+  background: linear-gradient(135deg, hsl(150 30% 68% / 0.15), hsl(150 30% 68% / 0.05), hsl(var(--background)));
+}
+.phase-bg-ovulation {
+  background: linear-gradient(135deg, hsl(28 80% 78% / 0.15), hsl(28 80% 78% / 0.05), hsl(var(--background)));
+}
+.phase-bg-luteal {
+  background: linear-gradient(135deg, hsl(260 30% 75% / 0.15), hsl(260 30% 75% / 0.05), hsl(var(--background)));
+}
+
+.prose-chat h2 { @apply text-base font-semibold mt-2 mb-1; }
+.prose-chat p { @apply mb-2 last:mb-0; }
+.prose-chat ul { @apply my-1 ml-4 list-disc; }
+.prose-chat li { @apply mb-0.5; }
+.prose-chat strong { @apply font-semibold; }
